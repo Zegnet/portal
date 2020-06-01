@@ -1,0 +1,220 @@
+html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    height: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+	text-align:left;
+    background-color: rgb(247, 245, 245);
+	font-family: Verdana, Tahoma, Arial;
+	margin:0;
+	padding:0;
+    height:100%;
+    overflow-x: hidden;
+  }
+
+nav p{
+    margin-top: 0;
+    margin-bottom: 1rem;
+    left: 50px;
+    position: absolute;
+}
+
+i{
+    position: absolute;
+}
+
+body .nav .menu-group.left{
+    background-color: #FFF;
+    position: fixed;
+    width: 260px;
+    height: 100%;
+    border-right: 1px #FFF;
+    box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 16px 38px -12px rgba(0,0,0,.56), 0 4px 25px 0 rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
+    z-index: 2;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+}
+
+body .workspace{
+    background-color: rgb(247, 245, 245);
+    position: absolute;
+    width: 100%;
+    margin-left: 250px;
+    height: 100%;
+    z-index: 0;
+}
+
+
+nav .menu-item.style{
+    position: relative;
+    width: 100%;
+    height: 5%;
+    background-color:#FFF;
+} 
+
+nav .menu{
+    z-index: 2;
+    background-color: #FFF;
+    position: fixed;
+    width: 260px;
+    height: 100%;
+}
+
+nav ul{
+    list-style: none;
+    top: 50px;
+    left: 0px;
+    bottom: -200px;
+    right: 350px;
+    position: absolute;
+}
+
+nav ul li{
+    border: 1px solid #FFF;
+
+}
+
+nav a{
+    text-decoration:none;
+    color:  #660099;
+}
+
+nav li a:hover{
+    font-weight: bold;
+    color:  #660099;
+}
+
+.nav .logo{
+    color: rgb(206, 206, 206);
+    font-weight: 500;
+    font-size: 20pt;
+    margin-left: 0;
+    margin-top: 10;
+    margin-right: 5px;
+    z-index: 2;
+    position: relative;
+    height: 105px;
+}
+
+.nav .logo img{
+    width: 100%;
+    height: 100%;
+}
+
+.workspace .view{
+    display: block; 
+}
+
+.workspace .view.active{
+    display: block; 
+}
+
+.workspace .view p.title{
+    margin-top: 20px;
+    margin-bottom: 1rem;
+    left: 40px;
+    position: absolute;
+    font-size: 20pt;
+    color: rgb(206, 206, 206);
+
+}
+
+.workspace .navbar-top{
+    position: relative;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(247, 245, 245);
+}
+
+.card{
+    margin-left: 5%;
+    margin-top: 5%;
+    position: relative;
+    background-color: #FFF;
+    color: #000;
+}
+
+.content{
+    background-color: rgb(247, 245, 245);
+    position: relative;
+    border:none;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+.content .content.card .card .card-body #btn-card{
+    background-color:#660099;
+    border-color: #660099;
+}
+
+.content .card .card-img-top{
+    width: 150px;
+    height: 150px;
+}
+
+.content-itens .content-item{
+    display: none;
+}
+
+.content-itens .content-item .card{
+    width: 50%;
+    margin-left: 15%;
+    margin-right: 0%;
+}
+
+.content-itens .content-item .card .card-header{
+    background-color: #660099;
+    color:#FFF;
+}
+
+.content-itens .content-item .card .card-body .form-group{
+    width: 70%;
+}
+
+.content-itens .content-item .card .card-body .form-group input{
+    width: 70%;
+}
+
+.content-itens .content-item .card .card-body .form-group select{
+    width: 70%;
+}
+.content-itens .content-item .card .card-body .form-group button{
+    color:#FFF;
+}
+.content-itens .content-item .card .card-body #gravar_pistolagem{
+    display: block;
+    background-color: #660099;
+    border-color: #660099 ;
+}
+
+.content-itens .content-item .card .card-body #executar_pistolagem{
+    display: none;
+    background-color: #660099;
+    border-color: #660099 ;
+}
+
+.content-itens .content-item .card .card-body #visualizar_log_pistolagem{
+    display: none;
+}
+
+.alert.alert-success{
+    display: none;
+    text-align: center;
+    color: #28a745;
+}
+.alert.alert-danger{
+    display: none;
+    text-align: center;
+    color: #dc3545; 
+}
+
+

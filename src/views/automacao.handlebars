@@ -1,0 +1,168 @@
+<div class="workspace">
+    <div class="view" data-me="2">
+        <div class="navbar-top">
+            <p class="title">Automação</p>
+            <div class="alert alert-success" role="alert" id="alert-success-pistolagem"> Dados foram gravados com sucesso</div> 
+            <div class="alert alert-danger" role="alert" id="alert-failed-pistolagem"> Ocorreu um erro ao tentar gravar os dados</div>
+        </div>
+        <div class="content">
+            <div class="content card">
+                <div class="card" style="width: 18rem;">
+                    <img src="../img/sap-img.png" class="card-img-top" alt="...">
+                    <div class="card-body" id="pistolagemsap">
+                        <h5 class="card-title">Pistolagem SAP</h5>
+                        <p class="card-text">A pistolagem realizada no SAP trata-se de um processo de registro de insumos de vendas realizadas (SimCards, Aparelhos etc...).</p>
+                        <p class="card-text">Através do nosso robô, você poderá realizar esse processo em até 20min.</p>
+                        <a href="#" class="btn btn-primary" id="btn-card" data-id="visualizar-pistolagem" data-btn-content="1">Visualizar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="content-itens">
+                <div class="content-item" data-content="1" id="form_sap">
+                    <form method="POST" id="formulario_pistolagem">
+                        <div class="card">
+                            <div class="card-header">
+                            Informações de Login
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="ambiente">Mandante</label>
+                                    <select class="form-control" id="mandante_sap" required>
+                                        <option value="0" selected>Selecione...</option>
+                                        <option value="410">Esteira 1</option>
+                                        <option value="420">Esteira 2</option>
+                                        <option value="430">ProdLike</option>
+                                        <option value="440">Preprod</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor informe a esteira/ambiente.
+                                    </div>
+                                </div> 
+                                <div class="form-group">
+                                    <label for="usuario_sap">Usuário</label>
+                                    <input type="text" class="form-control" id="usuario_sap" placeholder="Login" required>
+                                    <div class="invalid-feedback">
+                                         Por favor informe o usuário
+                                    </div>  
+                                </div> 
+                                <div class="form-group">
+                                    <label for="senha_sap">Senha</label>
+                                    <input type="password" class="form-control" id="senha_sap" placeholder="Senha" required>  
+                                    <div class="invalid-feedback">
+                                        Por favor informe a senha.
+                                    </div>  
+                                </div>         
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                            Massa de Teste
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="usuario_sap">Ordem de Venda</label>
+                                    <input type="text" class="form-control" id="ordem_venda" placeholder="Ordem de Venda" required>
+                                     <div class="invalid-feedback" id="ordem_venda_error">
+                                        
+                                    </div>  
+                                </div> 
+                                <div class="form-group">    
+                                    <button type="button" class="btn btn-warning" id="gravar_pistolagem">Gravar Dados</button>
+                                    <button type="button" class="btn btn-warning" id="executar_pistolagem">Executar Pistolagem</button>       
+                                </div>  
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="content-item" id="view_progress_sap_close">
+                    <div class="card">
+                        <div class="card-header">
+                            Log de Execução
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-danger" id="visualizar_log_pistolagem">Visualizar Log e Progresso</button>  
+                            </div>  
+                        </div>
+                    </div> 
+                </div>
+                <div class="content-item" id="view_progress_sap_open">
+                    <div class="card">
+                        <div class="card-header">
+                            <p>Progresso da Execução da Pistolagem</p>
+                            <div class="btn-group" id="btn_execucao">
+                                <button type="button" class="btn btn-danger">Ações</button>
+                                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" id="btn_execucao_seta" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#log_execucao" onclick="monitorLog()">Log de Execução (Em Desevolvimento)</a>
+                                    <a class="dropdown-item" href="#">Parar Execução (Em  Desenvolvimento)</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/home">Fechar Execução</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>Aguarde...</p>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">0%</div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Log</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p id="log_pistolagem_real"></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="log_execucao" tabindex="-1" role="dialog" aria-labelledby="log_execucao" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="log_execucao">Log de Execução </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <p>
+            Iniciando...
+          </p>
+          <p id="logStatic"></p>
+            <script>
+                function monitorLog(){
+                    var text = "<p>";
+                    var result = JSON.parse(JSON.stringify(window.localStorage.getItem("log")));
+                    for(var k in result){
+                        text +=  result[k] ;
+                    }
+                    text += "</p>";
+                    document.getElementById("logStatic").innerHTML  =  text;
+                }
+
+            </script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
